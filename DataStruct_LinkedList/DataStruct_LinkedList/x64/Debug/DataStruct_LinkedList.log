@@ -1,4 +1,4 @@
 ﻿  Main.c
-e:\datastruct_linkedlist\datastruct_linkedlist\main.c(40): warning C4474: 'printf' : 서식 문자열에 전달된 인수가 너무 많습니다.
-  e:\datastruct_linkedlist\datastruct_linkedlist\main.c(40): note: 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 3개가 제공되었습니다.
-  DataStruct_LinkedList.vcxproj -> E:\DataStruct_LinkedList\x64\Debug\DataStruct_LinkedList.exe
+c:\users\park sang min\desktop\study_projects\datastruct_linkedlist\datastruct_linkedlist\main.c(41): warning C4474: 'printf' : 서식 문자열에 전달된 인수가 너무 많습니다.
+  c:\users\park sang min\desktop\study_projects\datastruct_linkedlist\datastruct_linkedlist\main.c(41): note: 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 3개가 제공되었습니다.
+  DataStruct_LinkedList.vcxproj -> C:\Users\Park Sang Min\Desktop\Study_Projects\DataStruct_LinkedList\x64\Debug\DataStruct_LinkedList.exe

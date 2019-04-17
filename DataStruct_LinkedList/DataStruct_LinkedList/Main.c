@@ -1,9 +1,9 @@
 /*
 	다항식 연산 구현.
 */
-
 #include <stdio.h>
 #include <stdlib.h>		// malloc(), free()
+#include <math.h>		// pow()
 
 // 리스트 구조체 정의 및 선언.
 typedef struct tagNode {
@@ -138,6 +138,19 @@ void MergeList(Node **List1, Node **List2) {	// main()의 지역변수인 List1, List2
 	*List2 = NULL;
 }
 
+// 다항식 계산
+int Calculator(int x, Node *List) {
+	if (List != NULL) {
+		int Result = 0;
+		while (List != NULL) {
+			Result += List->Data1 * (int)pow((double)x, (double)(List->Data2));
+			List = List->NextNode;
+		}
+		return Result;
+	}
+	return 0;
+}
+
 int main() {
 
 	// 리스트의 시작주소를 저장하는 포인터변수 선언.
@@ -171,6 +184,11 @@ int main() {
 	// List1과 List2를 출력.
 	printf("List1 >> "); PrintList(List1);
 	printf("List2 >> "); PrintList(List2);
+
+	// List1의 다항식에 x값을 넣어 계산한 결과값 출력.
+	printf("\nf(1) >> %d\n", Calculator(1, List1));
+	printf("f(2) >> %d\n", Calculator(2, List1));
+	printf("f(3) >> %d\n", Calculator(3, List1));
 
 	// List1을 일괄삭제.
 	DeleteList(List1);
