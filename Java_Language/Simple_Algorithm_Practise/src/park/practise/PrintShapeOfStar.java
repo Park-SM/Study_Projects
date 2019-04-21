@@ -17,6 +17,12 @@ public class PrintShapeOfStar {
 		
 		System.out.println("\n::: Fish :::");
 		sos.PrintFish();
+		
+		System.out.println("\n::: Ribbon :::");
+		sos.PrintRibbon();
+		
+		System.out.println("\n::: Sand Clock :::");
+		sos.PrintSandClock();
 	}
 }
 
@@ -86,6 +92,62 @@ class ShapeOfStar {
 			for (int Row = 1; Row < (this.height / 2 + 1); Row++) {
 				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print(" ");
 				for (int Column = 0; Column < (2 * Row + 1); Column++) System.out.print("*");
+				System.out.println();
+			}
+		}
+	}
+
+	public void PrintRibbon() {
+		if (this.height % 2 == 0) {
+			for (int Row = (this.height / 2 - 1); Row >= 0; Row--) {
+				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print("*");
+				for (int Column = 0; Column <= (2 * Row - 1); Column++) System.out.print(" ");
+				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print("*");
+				System.out.println();
+			}
+			for (int Row = 0; Row < (this.height / 2); Row++) {
+				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print("*");
+				for (int Column = 0; Column <= (2 * Row - 1); Column++) System.out.print(" ");
+				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print("*");
+				System.out.println();
+			}
+		} else {
+			for (int Row = (this.height / 2 + 1); Row > 0; Row--) {
+				for (int Column = Row; Column <= (this.height / 2 + 1); Column++) System.out.print("*");
+				for (int Column = 1; Column < (2 * Row - 1); Column++) System.out.print(" ");
+				for (int Column = Row; Column <= (this.height / 2 + 1); Column++) System.out.print("*");
+				System.out.println();
+			}
+			for (int Row = 1; Row <= (this.height / 2); Row++) {
+				for (int Column = Row; Column < (this.height / 2 + 1); Column++) System.out.print("*");
+				for (int Column = 0; Column <= (2 * Row - 1); Column++) System.out.print(" ");
+				for (int Column = Row; Column < (this.height / 2 + 1); Column++) System.out.print("*");
+				System.out.println();
+			}
+		}
+	}
+	
+	public void PrintSandClock() {
+		if (this.height % 2 == 0) {
+			for (int Row = (this.height / 2); Row > 0; Row--) {
+				for (int Column = Row; Column <= (this.height / 2 - 1); Column++) System.out.print(" ");
+				for (int Column = 0; Column < (2 * Row - 1); Column++) System.out.print("*");
+				System.out.println();
+			}
+			for (int Row = 0; Row < (this.height / 2); Row++) {
+				for (int Column = Row; Column < (this.height / 2 - 1); Column++) System.out.print(" ");
+				for (int Column = 0; Column <= (2 * Row); Column++) System.out.print("*");
+				System.out.println();
+			}
+		} else {
+			for (int Row = (this.height / 2 + 1); Row > 0; Row--) {
+				for (int Column = Row; Column < (this.height / 2 + 1); Column++) System.out.print(" ");
+				for (int Column = 0; Column < (2 * Row - 1); Column++) System.out.print("*");
+				System.out.println();
+			}
+			for (int Row = 1; Row <= (this.height / 2); Row++) {
+				for (int Column = Row; Column < (this.height / 2); Column++) System.out.print(" ");
+				for (int Column = 0; Column <= (2 * Row); Column++) System.out.print("*");
 				System.out.println();
 			}
 		}
