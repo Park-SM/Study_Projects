@@ -1,0 +1,5 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 중간 디렉터리(x64\Debug\)에 다른 프로젝트(DataStruct_LinkedList.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  Main.c
+c:\users\park sang min\desktop\study_projects\c_language\datastructure_linkedlist_polynomial\datastruct_linkedlist\main.c(41): warning C4474: 'printf' : 서식 문자열에 전달된 인수가 너무 많습니다.
+  c:\users\park sang min\desktop\study_projects\c_language\datastructure_linkedlist_polynomial\datastruct_linkedlist\main.c(41): note: 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 3개가 제공되었습니다.
+  DataStruct_LinkedList.vcxproj -> C:\Users\Park Sang Min\Desktop\Study_Projects\C_Language\DataStructure_LinkedList_Polynomial\x64\Debug\DataStruct_LinkedList_Polynomial.exe
