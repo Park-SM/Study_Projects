@@ -1,0 +1,4 @@
+﻿  Main.c
+c:\users\user\desktop\study_projects\c_language\datastructure_tree\datastructure_tree\main.c(12): warning C4013: 'strlen'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+c:\users\user\desktop\study_projects\c_language\datastructure_tree\datastructure_tree\main.c(14): warning C4013: 'strncpy'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  DataStructure_Tree.vcxproj -> C:\Users\user\Desktop\Study_Projects\C_Language\DataStructure_Tree\Debug\DataStructure_Tree.exe
