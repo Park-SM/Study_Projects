@@ -18,7 +18,7 @@ Node* CreateNode(char *nData) {
 	return NewNode;
 }
 
-void AppendNode(Node *HeadNode, Node *NewNode) {
+void AppendChildNode(Node *HeadNode, Node *NewNode) {
 	if (HeadNode->LeftChild == NULL) {
 		HeadNode->LeftChild = NewNode;
 	} else {
@@ -49,14 +49,14 @@ int main() {
 	Node *Data7 = CreateNode("Park97.SM");
 	Node *Data8 = CreateNode("Park.SM");
 
-	AppendNode(RootNode, Data1);
-	AppendNode(RootNode, Data2);
-	AppendNode(RootNode, Data3);
-	AppendNode(Data1, Data4);
-	AppendNode(Data1, Data5);
-	AppendNode(Data2, Data6);
-	AppendNode(Data6, Data7);
-	AppendNode(Data3, Data8);
+	AppendChildNode(RootNode, Data1);
+	AppendChildNode(RootNode, Data2);
+	AppendChildNode(RootNode, Data3);
+	AppendChildNode(Data1, Data4);
+	AppendChildNode(Data1, Data5);
+	AppendChildNode(Data2, Data6);
+	AppendChildNode(Data6, Data7);
+	AppendChildNode(Data3, Data8);
 
 	PrintTree(RootNode, 0);
 
