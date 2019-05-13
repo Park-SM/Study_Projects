@@ -85,7 +85,7 @@ void DeleteTree(Node **RootNode) {
 int main() {
 
 	Node *RootNode = NULL;			// Tree의 RootNode를 가르키는 포인터, Tree의 시작주소.
-	int DataArray[] = { 24, 5, 37, 1, 61, 11, 7, 59, 15, 48, 19, 28 };			// 임의의 데이터 값.
+	int DataArray[] = { 27, 5, 37, 1, 61, 11, 7, 59, 15, 48, 19, 28 };			// 임의의 데이터 값.
 
 	puts(" :::: Input data :::::");
 	for (int i = 0; i < sizeof(DataArray) / sizeof(DataArray[0]); i++)			// 임의의 데이터 값 배열의 길이 만큼 반복하여 InputData함수로 Tree에 값 넣기.
@@ -105,6 +105,7 @@ int main() {
 	puts("\n :::: Print Tree :::::");
 	PrintTree(RootNode, 0);							// 일괄삭제처리를 확인하기 위해 Tree를 출력.
 
+	puts("\n\n\n");	// 개행.
 	system("PAUSE");			// 결과 값을 확인하기 위해 Console을 일시정지함.
 	return 0;
 }
