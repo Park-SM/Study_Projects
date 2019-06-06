@@ -38,18 +38,11 @@ void PrintTree_array(Tree *tree) {
 	puts("");
 }
 
-void PrintTree_tree(Tree *tree) {
-	int indent = 0;
-	for (int i = 2; i <= tree->Index; i += 2) {
-		for (int d = 0; d < indent; d++) printf("\t"); printf("|%d|\n", tree->TreeArr[i / 2]);
-		indent++;
-		if (tree->TreeArr[i] != NULLDATA) {
-			for (int d = 0; d < indent; d++) printf("|%d|\n", tree->TreeArr[i]);
-		}
-		if ((i + 1) <= tree->Index && tree->TreeArr[i + 1] != NULLDATA) {
-			for (int d = 0; d < indent; d++) printf("|%d|\n", tree->TreeArr[i + 1]);
-		}
-	}
+void PrintTree_tree(Tree *tree, int sIndex, int indent) {
+	if (!indent) puts("> Data Tree::\n");
+	if ((sIndex * 2) + 1 <= tree->Index && tree->TreeArr[(sIndex * 2) + 1] != NULLDATA) PrintTree_tree(tree, (sIndex * 2) + 1, indent + 1);
+	for (int d = 0; d < indent; d++) printf("     "); printf("|%d|\n", tree->TreeArr[sIndex]);
+	if (sIndex * 2 <= tree->Index && tree->TreeArr[sIndex * 2] != NULLDATA) PrintTree_tree(tree, sIndex * 2, indent + 1);
 }
 
 // if mode is 1, desc. if mode is 0, asce.
@@ -81,12 +74,17 @@ int main() {
 
 	InsertData(tree, uDataArr, sizeof(uDataArr) / sizeof(uDataArr[0]));
 
+	puts(" ::: Print array :::");
 	PrintTree_array(tree);
 
+	puts("\n ::: After heap-sort :::");
 	HeapSort(tree, 1);
 	
+	puts("\n ::: Print array :::");
 	PrintTree_array(tree);
-	//PrintTree_tree(tree);
+
+	puts("\n ::: Print tree :::");
+	PrintTree_tree(tree, 1, 0);
 
 	system("PAUSE");
 	return 0;

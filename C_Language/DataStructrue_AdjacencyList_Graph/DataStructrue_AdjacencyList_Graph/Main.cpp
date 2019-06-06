@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define NumOfVertex 9
+
 typedef struct tagGraph {
 	struct tagVertex *VertexList;
 	int Capacity;
@@ -66,7 +68,7 @@ void AddVertex(Graph *graph, Vertex *NewVertex) {
 	NewVertex->Index = graph->Capacity++;
 }
 
-void AddEdge(Graph *graph, Edge *NewEdge) {
+void AddEdge_directed(Graph *graph, Edge *NewEdge) {
 	if (graph->VertexList != NULL) {
 		Vertex *CurrentV = graph->VertexList;
 		while (CurrentV != NULL && CurrentV != NewEdge->FromVertex) CurrentV = CurrentV->NextVertex;
@@ -81,6 +83,33 @@ void AddEdge(Graph *graph, Edge *NewEdge) {
 			}
 		}
 		else {
+			puts(">> Error:: There is not the vertex.");
+			free(NewEdge);
+		}
+	}
+}
+
+void AddEdge_undirected(Graph *graph, Edge *NewEdge) {
+	if (graph->VertexList != NULL) {
+		Vertex *CurrentV_1 = graph->VertexList;
+		Vertex *CurrentV_2 = graph->VertexList;
+		Edge *CopyEdge = CreateEdge(NewEdge->TargetVertex, NewEdge->FromVertex, NewEdge->Weight);
+		while (CurrentV_1 != NULL && CurrentV_1 != NewEdge->FromVertex) CurrentV_1 = CurrentV_1->NextVertex;
+		while (CurrentV_2 != NULL && CurrentV_2 != CopyEdge->FromVertex) CurrentV_2 = CurrentV_2->NextVertex;
+		if (CurrentV_1 != NULL && CurrentV_2 != NULL) {
+			if (CurrentV_1->AdjacencyList == NULL) CurrentV_1->AdjacencyList = NewEdge;
+			else {
+				Edge *CurrentE = CurrentV_1->AdjacencyList;
+				while (CurrentE->NextEdge != NULL) CurrentE = CurrentE->NextEdge;
+				CurrentE->NextEdge = NewEdge;
+			}
+			if (CurrentV_2->AdjacencyList == NULL) CurrentV_2->AdjacencyList = CopyEdge;
+			else {
+				Edge *CurrentE = CurrentV_2->AdjacencyList;
+				while (CurrentE->NextEdge != NULL) CurrentE = CurrentE->NextEdge;
+				CurrentE->NextEdge = CopyEdge;
+			}
+		} else {
 			puts(">> Error:: There is not the vertex.");
 			free(NewEdge);
 		}
@@ -108,24 +137,23 @@ void PrintGraph(Graph *graph) {
 int main() {
 
 	Graph *graph = CreateGraph();
-	int NumOfVertex = 9;
-	Vertex *GraphArray[9];
+	Vertex *GraphArray[NumOfVertex];
 
 	for (int i = 0; i < NumOfVertex; i++) {
 		GraphArray[i] = CreateVertex(i);
 		AddVertex(graph, GraphArray[i]);
 	}
 
-	AddEdge(graph, CreateEdge(GraphArray[0], GraphArray[1], 0));
-	AddEdge(graph, CreateEdge(GraphArray[0], GraphArray[2], 0));
-	AddEdge(graph, CreateEdge(GraphArray[1], GraphArray[2], 0));
-	AddEdge(graph, CreateEdge(GraphArray[1], GraphArray[3], 0));
-	AddEdge(graph, CreateEdge(GraphArray[2], GraphArray[4], 0));
-	AddEdge(graph, CreateEdge(GraphArray[3], GraphArray[6], 0));
-	AddEdge(graph, CreateEdge(GraphArray[4], GraphArray[5], 0));
-	AddEdge(graph, CreateEdge(GraphArray[4], GraphArray[6], 0));
-	AddEdge(graph, CreateEdge(GraphArray[4], GraphArray[7], 0));
-	AddEdge(graph, CreateEdge(GraphArray[6], GraphArray[8], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[0], GraphArray[1], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[0], GraphArray[2], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[1], GraphArray[2], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[1], GraphArray[3], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[2], GraphArray[4], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[3], GraphArray[6], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[4], GraphArray[5], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[4], GraphArray[6], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[4], GraphArray[7], 0));
+	AddEdge_undirected(graph, CreateEdge(GraphArray[6], GraphArray[8], 0));
 
 	PrintGraph(graph);
 
