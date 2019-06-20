@@ -137,7 +137,7 @@ void PrintGraph(Graph *graph) {
 void FlushVisiedValue(Graph *graph) {
 	Vertex *CurrentV = graph->VertexList;
 	while (CurrentV != NULL) {
-		CurrentV->Index = 0;
+		CurrentV->Visited = 0;
 		CurrentV = CurrentV->NextVertex;
 	}
 }
@@ -150,6 +150,23 @@ void DFS(Vertex *CurrentV) {
 			DFS(CurrentE->TargetVertex);
 			CurrentE = CurrentE->NextEdge;
 		}
+	}
+}
+
+void BFS(Graph *graph) {
+	int cIndex = 0, mIndex = 0;
+	Vertex **ArrayVertex = (Vertex**)calloc(graph->Capacity, sizeof(Vertex*));
+	Edge *CurrentE;
+
+	graph->VertexList->Visited++;
+	ArrayVertex[mIndex++] = graph->VertexList;
+	for (int i = 0; i < graph->Capacity; i++) {
+		CurrentE = ArrayVertex[cIndex]->AdjacencyList;
+		while (CurrentE != NULL) {
+			if (!CurrentE->TargetVertex->Visited++) ArrayVertex[mIndex++] = CurrentE->TargetVertex;
+			CurrentE = CurrentE->NextEdge;
+		}
+		printf("|V%d| ", ArrayVertex[cIndex++]->Index);
 	}
 }
 
@@ -178,6 +195,10 @@ int main() {
 
 	printf("\n\n> DFS Print:: ");
 	DFS(graph->VertexList);
+	FlushVisiedValue(graph);
+
+	printf("\n\n> BFS Print:: ");
+	BFS(graph);
 	FlushVisiedValue(graph);
 	puts("");
 
