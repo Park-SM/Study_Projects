@@ -134,6 +134,25 @@ void PrintGraph(Graph *graph) {
 	}
 }
 
+void FlushVisiedValue(Graph *graph) {
+	Vertex *CurrentV = graph->VertexList;
+	while (CurrentV != NULL) {
+		CurrentV->Index = 0;
+		CurrentV = CurrentV->NextVertex;
+	}
+}
+
+void DFS(Vertex *CurrentV) {
+	if (!CurrentV->Visited++) {
+		Edge *CurrentE = CurrentV->AdjacencyList;
+		printf("|V%d| ", CurrentV->Index);
+		while (CurrentE != NULL) {
+			DFS(CurrentE->TargetVertex);
+			CurrentE = CurrentE->NextEdge;
+		}
+	}
+}
+
 int main() {
 
 	Graph *graph = CreateGraph();
@@ -156,6 +175,11 @@ int main() {
 	AddEdge_undirected(graph, CreateEdge(GraphArray[6], GraphArray[8], 0));
 
 	PrintGraph(graph);
+
+	printf("\n\n> DFS Print:: ");
+	DFS(graph->VertexList);
+	FlushVisiedValue(graph);
+	puts("");
 
 	system("PAUSE");
 	return 0;
