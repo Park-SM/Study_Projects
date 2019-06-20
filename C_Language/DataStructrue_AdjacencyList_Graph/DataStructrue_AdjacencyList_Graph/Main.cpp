@@ -168,6 +168,7 @@ void BFS(Graph *graph) {
 		}
 		printf("|V%d| ", ArrayVertex[cIndex++]->Index);
 	}
+	free(ArrayVertex);
 }
 
 int main() {
